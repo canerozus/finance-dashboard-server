@@ -2,12 +2,15 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "start": "nodemon index.js"
-  },
+  "repository": "https://github.com/canerozus/finance-dashboard-server.git",
+  "author": "deepforce08 <83680245+canerozus@users.noreply.github.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "yarn tsc && node dist/index.js"
+  },
   "dependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.16.3",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -15,9 +18,12 @@
     "helmet": "^6.1.5",
     "mongoose": "^7.1.0",
     "mongoose-currency": "^0.2.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "typescript": "^5.0.4"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/morgan": "^1.9.4",
     "nodemon": "^2.0.22"
   }
 }
