@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",
+    "@types/mongoose": "^5.11.97",
     "@types/morgan": "^1.9.4",
     "nodemon": "^2.0.22"
   }

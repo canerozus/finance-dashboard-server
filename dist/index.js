@@ -19,6 +19,7 @@ const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
+const kpiRoutes_1 = __importDefault(require("./routes/kpiRoutes"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
@@ -30,9 +31,10 @@ app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use((0, cors_1.default)());
 console.log("hello");
+app.use('/kpi', kpiRoutes_1.default);
 app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
     mongoose_1.default
         .connect(process.env.MONGO_URL)
         .then((result) => console.log("MONGODB CONNECTED"));
-    console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
+    console.log(`Server is running at https://localhost:${port}`);
 }));
