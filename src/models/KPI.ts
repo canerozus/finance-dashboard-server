@@ -10,7 +10,6 @@ interface IKPI {
 
   }
 
-
 const KPISchema = new Schema<IKPI>({
     totalProfit: {
         type: mongoose.Types.Decimal128,
