@@ -5,7 +5,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
-
+import kpiRoutes from "./routes/kpiRoutes";
 
 dotenv.config()
 
@@ -19,6 +19,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 console.log("hello")
+
+
+app.use('/kpi', kpiRoutes);
 
 app.listen(port, async () => {
     mongoose
