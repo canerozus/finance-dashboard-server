@@ -6,11 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 require('mongoose-currency').loadType(mongoose_1.default);
 const Schema = mongoose_1.default.Schema;
-var Currency = mongoose_1.default.Types;
-console.log("test" + Currency);
 const KPISchema = new Schema({
     totalProfit: {
-        name: 'total'
+        type: mongoose_1.default.Types.Decimal128,
+        currency: "USD"
     }
 });
 const KPI = mongoose_1.default.model("KPI", KPISchema);

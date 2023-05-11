@@ -30,11 +30,14 @@ app.use((0, morgan_1.default)("common"));
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use((0, cors_1.default)());
-console.log("hello");
-app.use('/kpi', kpiRoutes_1.default);
+app.use("/", (req, res) => {
+    res.send("hello");
+});
+app.use("/kpi", kpiRoutes_1.default);
 app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
     mongoose_1.default
         .connect(process.env.MONGO_URL)
-        .then((result) => console.log("MONGODB CONNECTED"));
-    console.log(`Server is running at https://localhost:${port}`);
+        .then((result) => console.log("MONGODB CONNECTED"))
+        .catch((error) => console.log(`${error} did not connect`));
+    console.log(`Server is running at ${port}`);
 }));
