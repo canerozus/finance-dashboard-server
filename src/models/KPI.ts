@@ -1,18 +1,18 @@
-import mongoose, { Decimal128 } from "mongoose";
+var mongoose = require("mongoose");
 require("mongoose-currency").loadType(mongoose);
 
 const Schema = mongoose.Schema;
-
+var Currency = mongoose.Types.Currency;
 const daySchema = new Schema(
   {
     date: String,
     revenue: {
-      type: mongoose.Types.Decimal128,
+      type: Currency,
       currency: "USD",
       get: (v: any) => v / 100,
     },
     expenses: {
-      type: mongoose.Types.Decimal128,
+      type: Currency,
       currency: "USD",
       get: (v: any) => v / 100,
     },
@@ -24,22 +24,22 @@ const monthSchema = new Schema(
   {
     month: String,
     revenue: {
-      type: mongoose.Types.Decimal128,
+      type: Currency,
       currency: "USD",
       get: (v: any) => v / 100,
     },
     expenses: {
-      type: mongoose.Types.Decimal128,
+      type: Currency,
       currency: "USD",
       get: (v: any) => v / 100,
     },
     operationalExpenses: {
-      type: mongoose.Types.Decimal128,
+      type: Currency,
       currency: "USD",
       get: (v: any) => v / 100,
     },
     nonOperationalExpenses: {
-      type: mongoose.Types.Decimal128,
+      type: Currency,
       currency: "USD",
       get: (v: any) => v / 100,
     },
@@ -50,24 +50,24 @@ const monthSchema = new Schema(
 const KPISchema = new Schema(
   {
     totalProfit: {
-      type: mongoose.Types.Decimal128,
+      type: Currency,
       currency: "USD",
       get: (v: any) => v / 100,
     },
     totalRevenue: {
-      type: mongoose.Types.Decimal128,
+      type: Currency,
       currency: "USD",
       get: (v: any) => v / 100,
     },
     totalExpenses: {
-      type: mongoose.Types.Decimal128,
+      type: Currency,
       currency: "USD",
       get: (v: any) => v / 100,
     },
     expensesByCategory: {
       type: Map,
       of: {
-        type: mongoose.Types.Decimal128,
+        type: Currency,
         currency: "USD",
         get: (v: any) => v / 100,
       },

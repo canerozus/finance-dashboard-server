@@ -20,6 +20,8 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
 const kpiRoutes_1 = __importDefault(require("./routes/kpiRoutes"));
+const KPI_1 = __importDefault(require("./models/KPI"));
+const data_1 = require("./data/data");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
@@ -37,7 +39,11 @@ app.use("/kpi", kpiRoutes_1.default);
 app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
     mongoose_1.default
         .connect(process.env.MONGO_URL)
-        .then((result) => console.log("MONGODB CONNECTED"))
+        .then((result) => __awaiter(void 0, void 0, void 0, function* () {
+        console.log("MONGODB CONNECTED");
+        yield mongoose_1.default.connection.db.dropDatabase();
+        KPI_1.default.insertMany(data_1.kpis);
+    }))
         .catch((error) => console.log(`${error} did not connect`));
     console.log(`Server is running at ${port}`);
 }));

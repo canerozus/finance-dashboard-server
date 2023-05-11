@@ -15,9 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const KPI_1 = __importDefault(require("../models/KPI"));
 const router = express_1.default.Router();
-router.get('/kpis', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("/kpis", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const kpis = yield KPI_1.default.find();
+        res.send(200).json(kpis);
     }
     catch (error) {
         res.status(404).json({ message: error.message });
