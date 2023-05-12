@@ -18,7 +18,7 @@ const router = express_1.default.Router();
 router.get("/kpis", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const kpis = yield KPI_1.default.find();
-        res.send(200).json(kpis);
+        res.status(200).json(kpis);
     }
     catch (error) {
         res.status(404).json({ message: error.message });

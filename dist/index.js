@@ -20,11 +20,9 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
 const kpiRoutes_1 = __importDefault(require("./routes/kpiRoutes"));
-const KPI_1 = __importDefault(require("./models/KPI"));
-const data_1 = require("./data/data");
+const port = process.env.PORT;
 dotenv_1.default.config();
 const app = (0, express_1.default)();
-const port = process.env.PORT;
 app.use(express_1.default.json());
 app.use((0, helmet_1.default)());
 app.use(helmet_1.default.crossOriginResourcePolicy({ policy: "cross-origin" }));
@@ -32,17 +30,18 @@ app.use((0, morgan_1.default)("common"));
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use((0, cors_1.default)());
-app.use("/", (req, res) => {
-    res.send("hello");
-});
 app.use("/kpi", kpiRoutes_1.default);
 app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
     mongoose_1.default
         .connect(process.env.MONGO_URL)
         .then((result) => __awaiter(void 0, void 0, void 0, function* () {
-        console.log("MONGODB CONNECTED");
-        yield mongoose_1.default.connection.db.dropDatabase();
-        KPI_1.default.insertMany(data_1.kpis);
+        console.log("MONGODB CONNECTED", {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        //Add data one time or as needed
+        // await mongoose.connection.db.dropDatabase();
+        // KPI.insertMany(kpis);
     }))
         .catch((error) => console.log(`${error} did not connect`));
     console.log(`Server is running at ${port}`);

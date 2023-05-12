@@ -9,10 +9,9 @@ import kpiRoutes from "./routes/kpiRoutes";
 import KPI from "./models/KPI";
 import { kpis } from "./data/data";
 
-dotenv.config();
-
-const app: Express = express();
 const port = process.env.PORT;
+dotenv.config();
+const app = express();
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
@@ -21,16 +20,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-app.use("/", (req, res) => {
-  res.send("hello");
-});
+
 app.use("/kpi", kpiRoutes);
+
 
 app.listen(port, async () => {
   mongoose
     .connect(process.env.MONGO_URL)
     .then(async (result) => {
-      console.log("MONGODB CONNECTED");
+      console.log("MONGODB CONNECTED", {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
       //Add data one time or as needed
       // await mongoose.connection.db.dropDatabase();
       // KPI.insertMany(kpis);
