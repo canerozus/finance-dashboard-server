@@ -9,7 +9,7 @@ import kpiRoutes from "./routes/kpiRoutes";
 import KPI from "./models/KPI";
 import { kpis } from "./data/data";
 
-const port = process.env.PORT;
+const port = process.env.PORT || 8000;
 dotenv.config();
 const app = express();
 app.use(express.json());

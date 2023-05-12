@@ -20,7 +20,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
 const kpiRoutes_1 = __importDefault(require("./routes/kpiRoutes"));
-const port = process.env.PORT;
+const port = process.env.PORT || 8000;
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
