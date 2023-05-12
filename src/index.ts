@@ -31,8 +31,9 @@ app.listen(port, async () => {
     .connect(process.env.MONGO_URL)
     .then(async (result) => {
       console.log("MONGODB CONNECTED");
-      await mongoose.connection.db.dropDatabase();
-      KPI.insertMany(kpis);
+      //Add data one time or as needed
+      // await mongoose.connection.db.dropDatabase();
+      // KPI.insertMany(kpis);
     })
     .catch((error) => console.log(`${error} did not connect`));
   console.log(`Server is running at ${port}`);
