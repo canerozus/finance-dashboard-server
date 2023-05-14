@@ -10,6 +10,7 @@ import productRoutes from "./routes/productRoutes";
 import KPI from "./models/KPI";
 import Product from "./models/Product";
 import { kpis, products } from "./data/data";
+
 const port = process.env.PORT || 8000;
 dotenv.config();
 const app = express();
@@ -22,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 app.use("/kpi", kpiRoutes);
-app.use("product", productRoutes);
+app.use("/product", productRoutes);
 
 app.listen(port, async () => {
   mongoose
