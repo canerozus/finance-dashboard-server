@@ -35,6 +35,9 @@ app.use((0, cors_1.default)({ origin: [`http://localhost${port}`, "https://finan
 app.use("/kpi", kpiRoutes_1.default);
 app.use("/product", productRoutes_1.default);
 app.use("/transaction", transactionRoutes_1.default);
+app.get("/", (req, res) => {
+    res.json("hellooo");
+});
 app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
     mongoose_1.default
         .connect(process.env.MONGO_URL)

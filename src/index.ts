@@ -27,7 +27,9 @@ app.use(cors({origin: [`http://localhost${port}`,"https://financeor.vercel.app"]
 app.use("/kpi", kpiRoutes);
 app.use("/product", productRoutes);
 app.use("/transaction", transactionRoutes);
-
+app.get("/", (req,res)=> {
+  res.json("hellooo")
+});
 app.listen(port, async () => {
   mongoose
     .connect(process.env.MONGO_URL)
