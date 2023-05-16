@@ -6,7 +6,7 @@
   "author": "deepforce08 <83680245+canerozus@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "start": "yarn tsc && node dist/index.js"
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "@types/express": "^4.17.17",
