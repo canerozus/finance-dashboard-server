@@ -17,7 +17,7 @@ const KPI_1 = __importDefault(require("../models/KPI"));
 const router = express_1.default.Router();
 router.get("/kpis", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const kpis = yield KPI_1.default.find().limit(50);
+        const kpis = yield KPI_1.default.find();
         res.status(200).json(kpis);
     }
     catch (error) {
