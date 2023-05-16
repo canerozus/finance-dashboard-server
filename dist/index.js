@@ -22,8 +22,6 @@ const morgan_1 = __importDefault(require("morgan"));
 const kpiRoutes_1 = __importDefault(require("./routes/kpiRoutes"));
 const productRoutes_1 = __importDefault(require("./routes/productRoutes"));
 const transactionRoutes_1 = __importDefault(require("./routes/transactionRoutes"));
-const Transaction_1 = __importDefault(require("./models/Transaction"));
-const data_1 = require("./data/data");
 const port = process.env.PORT || 8000;
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -49,7 +47,7 @@ app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
         // await mongoose.connection.db.dropDatabase();
         // KPI.insertMany(kpis);
         // Product.insertMany(products);
-        Transaction_1.default.insertMany(data_1.transactions);
+        // Transaction.insertMany(transactions);
     }))
         .catch((error) => console.log(`${error} did not connect`));
     console.log(`Server is running at ${port}`);
